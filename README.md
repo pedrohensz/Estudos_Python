@@ -16,8 +16,7 @@ Estudos_Python/
 ├── .gitignore
 └── README.md
 
-yaml
-Copy code
+
 
 ---
 
@@ -51,15 +50,16 @@ Consolidar a base em Python através de prática constante, explorando:
 
 ## 🛠️ Tecnologias e Ferramentas
 - Python 3.x  
-- VS Code / Jupyter Notebook  
+- VS Code
 - Git e GitHub  
 
 ---
 
 ## ✍️ Autor
 **Pedro Henrique**  
-💼 Estudante de Python e entusiasta de Ciência de Dados  
+💼 Estudante de Python
 🔗 [GitHub](https://github.com/pedrohensz)
+🔗 [LinkedIn](www.linkedin.com/in/pedro-henrique-28175520b)
 
 ---
 
