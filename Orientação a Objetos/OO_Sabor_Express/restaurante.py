@@ -29,4 +29,4 @@ restaurante_pizza = Restaurante()
 
 restaurantes = [restaurante_praca, restaurante_pizza]
 
-print(restaurante_praca())
+print(vars(restaurante_praca))
