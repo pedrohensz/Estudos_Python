@@ -21,12 +21,54 @@ Como criamos uma classe a partir de um objeto ?
 
 """
 restaurante_praca = Restaurante()
-restaurante_praca.nome = "Praça"
-restaurante_praca.categoria = "Gourmet"
-restaurante_praca.ativo = False
 restaurante_pizza = Restaurante()
 "Qualquer restaurante que vai ser criado, terá que ser armazenado em uma variável que é igual a classe restaurante"
 
 restaurantes = [restaurante_praca, restaurante_pizza]
 
-print(vars(restaurante_praca))
+
+
+"""
+Método construtor
+O construtor é executado automaticamente sempre que um objeto de uma classe é instânciado
+Serve para definir os valores iniciais de cada atributo
+"""
+class Restaurante:
+    def __init__(self, nome, categoria):
+        self.nome = nome
+        self.categoria = categoria
+        self.ativo = False
+    
+"""
+O self é utilizado para "dizer ao python" qie o valor do argumento deve ser armazenado no atributo que está dentro do objeto
+O nome self é uma convenção, podendo ser chamado de "qualquer coisa" visto que é uma variável
+
+"""
+
+
+restaurante_praca = Restaurante("Praça","Gourmet")
+restaurante_pizza = Restaurante("Pizza Express","Italiana")
+
+
+"""
+Métodos especiais
+São métodos nativos do python, utilizando o comando dir() você consegue vizualizar todos os métodos, inclusio o __str__ que trás a visulização do método via string
+"""
+class Restaurante:
+    def __init__(self, nome, categoria):
+        self.nome = nome
+        self.categoria = categoria
+        self.ativo = False
+
+    def __str__(self):
+        return f'{self.nome} | {self.categoria}'
+    
+restaurante_praca = Restaurante("Praça","Gourmet")
+restaurante_pizza = Restaurante("Pizza Express","Italiana")
+    
+print(restaurante_praca)
+print(restaurante_pizza)
+
+"""
+Criando métodos
+"""
