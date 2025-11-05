@@ -29,4 +29,8 @@ restaurante_pizza = Restaurante()
 
 restaurantes = [restaurante_praca, restaurante_pizza]
 
+<<<<<<< HEAD
 print(restaurante_praca)
+=======
+print(vars(restaurante_praca))
+>>>>>>> 4ba570466ea667860cbe20387acfbf89c5b5a254
