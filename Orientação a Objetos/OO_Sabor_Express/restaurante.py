@@ -66,9 +66,37 @@ class Restaurante:
 restaurante_praca = Restaurante("Praça","Gourmet")
 restaurante_pizza = Restaurante("Pizza Express","Italiana")
     
-print(restaurante_praca)
-print(restaurante_pizza)
+
 
 """
 Criando métodos
+O python tem métodos especiais chamados de Dunder options( Double Underscore) essa seleção engloba o método construtor (__init__) e diversos outros, esses métodos definem o comportamento especial dos objetos.
+Abaixo criamos o método "listar restaurantes" que pode ser chamado com a classe Restaurante e listará todos restaurantes instânciados.
+
+
+"""
+class Restaurante:
+    restaurantes = []
+    def __init__(self, nome, categoria):
+        self.nome = nome
+        self.categoria = categoria
+        self.ativo = False
+        Restaurante.restaurantes.append(self)
+    def __str__(self):
+        return f'{self.nome} | {self.categoria}'
+    
+    def listar_restaurantes():
+        for restaurante in Restaurante.restaurantes:
+            print(f"{restaurante.nome} | {restaurante.categoria} | {restaurante.ativo}")
+
+restaurante_praca = Restaurante("Praça","Gourmet")
+restaurante_pizza = Restaurante("Pizza Express","Italiana")
+Restaurante.listar_restaurantes()
+
+"""
+Uma classe é o molde.
+
+Um objeto é o produto feito com esse molde.
+
+Um método é um comportamento que pertence a esse molde — e, portanto, também a todos os objetos criados a partir dele.
 """
