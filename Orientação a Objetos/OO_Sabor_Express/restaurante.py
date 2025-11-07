@@ -100,3 +100,32 @@ Um objeto é o produto feito com esse molde.
 
 Um método é um comportamento que pertence a esse molde — e, portanto, também a todos os objetos criados a partir dele.
 """
+#property
+"""
+@property é um decorador usado para transformar um método em um atributo "controlado".
+Ele serve para mascarar uma função dentro da classe, permitindo acessar o seu valor
+como se fosse um atributo (sem precisar usar parênteses), deixando o código mais limpo.
+
+Além disso, o @property permite adicionar lógica (como validação ou formatação)
+sem alterar a forma de acesso ao atributo.
+"""
+class Restaurante:
+    restaurantes = []
+    def __init__(self, nome, categoria):
+        self.nome = nome
+        self.categoria = categoria
+        self.ativo = False
+        Restaurante.restaurantes.append(self)
+    def __str__(self):
+        return f'{self.nome} | {self.categoria}'
+    
+    def listar_restaurantes():
+        for restaurante in Restaurante.restaurantes:
+            print(f"{restaurante.nome} | {restaurante.categoria} | {restaurante.ativo}")
+
+    @property
+    def ativo(self):
+        return "Ativo 👌" if self.ativo else "Desativado 📛"
+restaurante_praca = Restaurante("Praça","Gourmet")
+restaurante_pizza = Restaurante("Pizza Express","Italiana")
+Restaurante.listar_restaurantes()
