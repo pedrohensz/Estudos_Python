@@ -89,9 +89,9 @@ class Restaurante:
         for restaurante in Restaurante.restaurantes:
             print(f"{restaurante.nome} | {restaurante.categoria} | {restaurante.ativo}")
 
-restaurante_praca = Restaurante("Praça","Gourmet")
-restaurante_pizza = Restaurante("Pizza Express","Italiana")
-Restaurante.listar_restaurantes()
+#restaurante_praca = Restaurante("Praça","Gourmet")
+#restaurante_pizza = Restaurante("Pizza Express","Italiana")
+#Restaurante.listar_restaurantes()
 
 """
 Uma classe é o molde.
@@ -114,18 +114,47 @@ class Restaurante:
     def __init__(self, nome, categoria):
         self.nome = nome
         self.categoria = categoria
-        self.ativo = False
+        self._ativo = False
         Restaurante.restaurantes.append(self)
     def __str__(self):
         return f'{self.nome} | {self.categoria}'
     
     def listar_restaurantes():
+        print(f'{'Nome do Restraurante'.ljust(25)} | {'Categoria'.ljust(25)} | {'Status'.ljust(25)}')
         for restaurante in Restaurante.restaurantes:
-            print(f"{restaurante.nome} | {restaurante.categoria} | {restaurante.ativo}")
+            print(f"{restaurante.nome.ljust(25)} | {restaurante.categoria.ljust(25)} | {restaurante.ativo.ljust(25)}")
 
     @property
     def ativo(self):
-        return "Ativo 👌" if self.ativo else "Desativado 📛"
+        return "Ativo 👌" if self._ativo else "Desativado 📛"
+#restaurante_praca = Restaurante("Praça","Gourmet")
+#restaurante_pizza = Restaurante("Pizza Express","Italiana")
+#Restaurante.listar_restaurantes()
+
+"""
+Aprofundando em propriedades:
+Na aula em questão é passado que houve uma mudança na regra de negócio e todos restaurantes devem ter a primeira letra maiúscula
+(o que pode ser alterado direto no atributo nome usando o .title()), também é passado a noção de atributos públicos, internos e privados. Sendo eles nomeados sem underscore(público, acesso livre), com 1 underscore (interno, ainda acessível mas por convenção não deve ser alterado) e 2 underscore (mangling dificulta o acesso mas não impede). Também foi passado sobre o @classmethod quando um método não vai variar conforme o objeto mas sempre que chamado trará a mesma resposta por que se refere a classe inteira. (geralmente não envolve o self)
+"""
+
+class Restaurante:
+    restaurantes = []
+    def __init__(self, _nome, _categoria):
+        self.nome = _nome.title()
+        self.categoria = _categoria.upper()
+        self._ativo = False
+        Restaurante.restaurantes.append(self)
+    def __str__(self):
+        return f'{self.nome} | {self.categoria}'
+    
+    def listar_restaurantes():
+        print(f'{'Nome do Restraurante'.ljust(25)} | {'Categoria'.ljust(25)} | {'Status'.ljust(25)}')
+        for restaurante in Restaurante.restaurantes:
+            print(f"{restaurante.nome.ljust(25)} | {restaurante.categoria.ljust(25)} | {restaurante.ativo.ljust(25)}")
+
+    @property
+    def ativo(self):
+        return "Ativo 👌" if self._ativo else "Desativado 📛"
 restaurante_praca = Restaurante("Praça","Gourmet")
 restaurante_pizza = Restaurante("Pizza Express","Italiana")
 Restaurante.listar_restaurantes()
