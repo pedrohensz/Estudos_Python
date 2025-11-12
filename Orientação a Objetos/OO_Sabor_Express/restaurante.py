@@ -1,3 +1,5 @@
+from avaliacao import Avaliacao
+
 """
 O que é uma classe ?
 Uma abstração do mundo real em um código onde será possível juntar
@@ -155,6 +157,81 @@ class Restaurante:
     @property
     def ativo(self):
         return "Ativo 👌" if self._ativo else "Desativado 📛"
-restaurante_praca = Restaurante("Praça","Gourmet")
-restaurante_pizza = Restaurante("Pizza Express","Italiana")
-Restaurante.listar_restaurantes()
+    
+    def alternar_estado(self):
+        self._ativo = not self._ativo
+
+    
+"""
+Criando classe de avaliação
+"""
+class Restaurante:
+    restaurantes = []
+    def __init__(self, _nome, _categoria):
+        self.nome = _nome.title()
+        self.categoria = _categoria.upper()
+        self._ativo = False
+        self._avaliacao = []
+        Restaurante.restaurantes.append(self)
+    def __str__(self):
+        return f'{self.nome} | {self.categoria}'
+    
+    def listar_restaurantes():
+        print(f'{'Nome do Restraurante'.ljust(25)} | {'Categoria'.ljust(25)} | {'Status'.ljust(25)}')
+        for restaurante in Restaurante.restaurantes:
+            print(f"{restaurante.nome.ljust(25)} | {restaurante.categoria.ljust(25)} | {restaurante.ativo.ljust(25)}")
+
+    @property
+    def ativo(self):
+        return "Ativo 👌" if self._ativo else "Desativado 📛"
+    
+    def alternar_estado(self):
+        self._ativo = not self._ativo
+
+    def receber_avaliacao(self, cliente, nota):
+        avaliacao = Avaliacao(cliente,nota)
+        self._avaliacao.append(avaliacao)
+
+"""
+Após criarmos o método de avaliação, precisamos que ela seja exibida
+de alguma maneira. E isso será feito abaixo com a criação de um 
+método que irá fazer a soma e média das avaliações.
+"""
+
+class Restaurante:
+    restaurantes = []
+    def __init__(self, _nome, _categoria):
+        self.nome = _nome.title()
+        self.categoria = _categoria.upper()
+        self._ativo = False
+        self._avaliacao = []
+        Restaurante.restaurantes.append(self)
+    def __str__(self):
+        return f'{self.nome} | {self.categoria}'
+    
+
+    @property
+    def ativo(self):
+        return "Ativo 👌" if self._ativo else "Desativado 📛"
+    
+    def alternar_estado(self):
+        self._ativo = not self._ativo
+
+    def receber_avaliacao(self, cliente, nota):
+        avaliacao = Avaliacao(cliente,nota)
+        self._avaliacao.append(avaliacao)
+
+    @property
+    def media_avaliacoes(self):
+        if not self._avaliacao: #caso não tenha nenhuma avalição retorna zero
+            return 0
+        soma_das_notas = sum(Avaliacao._nota for Avaliacao in self._avaliacao) #soma de todas as notas contidas na lista de avaliacoes
+        quantidade_de_notas = len(self._avaliacao) #armazena o numero de avaliacoes
+        media = round(soma_das_notas/ quantidade_de_notas, 1) #realiza o calculo da média
+        return media #retorna a média
+    
+    @classmethod
+    def listar_restaurantes(cls):
+        print(f'{'Nome do Restraurante'.ljust(25)} | {'Categoria'.ljust(25)} | {'Status'.ljust(25)} | {'Avaliação'.ljust(25)}')
+        for restaurante in Restaurante.restaurantes:
+            print(f"{restaurante.nome.ljust(25)} | {restaurante.categoria.ljust(25)} | {restaurante.ativo.ljust(25)} | {str(restaurante.media_avaliacoes).ljust(25)}")
