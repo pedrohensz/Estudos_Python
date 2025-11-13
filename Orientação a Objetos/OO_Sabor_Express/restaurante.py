@@ -217,14 +217,25 @@ class Restaurante:
     def alternar_estado(self):
         self._ativo = not self._ativo
 
+    #resolução do Mão na Massa 5 (inserindo validações na nota)
     def receber_avaliacao(self, cliente, nota):
         avaliacao = Avaliacao(cliente,nota)
-        self._avaliacao.append(avaliacao)
+        if not isinstance(nota, float):
+            raise TypeError ("A avaliação precisa ser uma ser inserida com virgula (ex: xx,xx).")
+        elif nota > 5.0:
+            raise TypeError ("A nota não pode ser maior que 5.00.")
+        elif nota < 0:
+            raise ValueError ("A avaliação inserida está negativo")   
+        else:
+            self._avaliacao.append(avaliacao)
+    
+
+        
 
     @property
     def media_avaliacoes(self):
         if not self._avaliacao: #caso não tenha nenhuma avalição retorna zero
-            return 0
+            return "Restaurante ainda sem avaliações"
         soma_das_notas = sum(Avaliacao._nota for Avaliacao in self._avaliacao) #soma de todas as notas contidas na lista de avaliacoes
         quantidade_de_notas = len(self._avaliacao) #armazena o numero de avaliacoes
         media = round(soma_das_notas/ quantidade_de_notas, 1) #realiza o calculo da média
