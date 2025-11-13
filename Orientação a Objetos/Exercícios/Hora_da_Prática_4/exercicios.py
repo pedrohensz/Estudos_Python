@@ -62,15 +62,14 @@ livro2 = Livro("O Senhor dos Anéis", "J.R.R. Tolkien", 1954)
 #4
 class Livro():
     def  __init__(self, titulo, autor, ano_publicacao):
+        Livro.livros = [livro1,livro2]
         self.titulo = titulo
         self.autor = autor
         self.ano_publicacao = ano_publicacao
         self.disponivel = False
     
 
-    @property
-    def ativo(self):
-        return "Disponível 👍" if self.disponivel else "Indisponível 📛"
+
 
     def emprestar(self):
         self.disponivel = not self.disponivel
@@ -79,24 +78,27 @@ class Livro():
         return f"Titulo: {self.titulo} | Autor: {self.autor} | Ano de Publicação: {self.ano_publicacao}"
 
     def verificar_disponibilidade(ano):
-        lista_livros = [livro1,livro2]
-        livros_ano =[]
-        for livro in lista_livros:
-            if ano == livro.ano_publicacao:
-                livros_ano.append(livro.titulo)
-                return f"Os livros de {ano} são {livros_ano}"
+        livros_disponiveis = [livro for livro in Livro.livros if livro.ano_publicacao == ano and livro.disponivel]
+        return f"Os livros de {ano} são {livros_disponiveis}"
             
+    @property
+    def ativo(self):
+        return "Disponível 👍" if self.disponivel else "Indisponível 📛"
+    
+    
 
                 
                 
             
+if __name__ == '__main__':
+    livro1 = Livro("1984", "George Orwell", 1949)
+    livro2 = Livro("O Senhor dos Anéis", "J.R.R. Tolkien", 1954)
 
-livro1 = Livro("1984", "George Orwell", 1949)
-livro2 = Livro("O Senhor dos Anéis", "J.R.R. Tolkien", 1954)
+    print(livro1.ativo)
 
-print(Livro.verificar_disponibilidade(1954))
+    #5
 
-#5
+    
 
 
 
