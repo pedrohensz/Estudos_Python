@@ -22,7 +22,8 @@ class Livro():
         self.titulo = titulo
         self.autor = autor
         self.ano_publicacao = ano_publicacao
-    
+        self.disponivel = True
+
     def __str__(self):
         return f"Titulo: {self.titulo} | Autor: {self.autor} | Ano de Publicação: {self.ano_publicacao}"
 
@@ -33,6 +34,69 @@ livro2 = Livro("O Senhor dos Anéis", "J.R.R. Tolkien", 1954)
 # print(livro2)
 
 #3
+class Livro():
+    def  __init__(self, titulo, autor, ano_publicacao):
+        self.titulo = titulo
+        self.autor = autor
+        self.ano_publicacao = ano_publicacao
+        self.disponivel = False
     
+    def __str__(self):
+        return f"Titulo: {self.titulo} | Autor: {self.autor} | Ano de Publicação: {self.ano_publicacao}"
+    
+    def emprestar(self):
+        self.disponivel = not self.disponivel
+    
+
+
+
+livro1 = Livro("1984", "George Orwell", 1949)
+livro2 = Livro("O Senhor dos Anéis", "J.R.R. Tolkien", 1954)
+
+
+
+#print(f"Antes de emprestar: Livro disponível? {livro2.disponivel}")
+#livro2.emprestar()
+#print(f"Depois de emprestar: Livro disponível? {livro2.disponivel}")
+
+#4
+class Livro():
+    def  __init__(self, titulo, autor, ano_publicacao):
+        self.titulo = titulo
+        self.autor = autor
+        self.ano_publicacao = ano_publicacao
+        self.disponivel = False
+    
+
+    @property
+    def ativo(self):
+        return "Disponível 👍" if self.disponivel else "Indisponível 📛"
+
+    def emprestar(self):
+        self.disponivel = not self.disponivel
+    
+    def __str__(self):
+        return f"Titulo: {self.titulo} | Autor: {self.autor} | Ano de Publicação: {self.ano_publicacao}"
+
+    def verificar_disponibilidade(ano):
+        lista_livros = [livro1,livro2]
+        livros_ano =[]
+        for livro in lista_livros:
+            if ano == livro.ano_publicacao:
+                livros_ano.append(livro.titulo)
+                return f"Os livros de {ano} são {livros_ano}"
+            
+
+                
+                
+            
+
+livro1 = Livro("1984", "George Orwell", 1949)
+livro2 = Livro("O Senhor dos Anéis", "J.R.R. Tolkien", 1954)
+
+print(Livro.verificar_disponibilidade(1954))
+
+#5
+
 
 
