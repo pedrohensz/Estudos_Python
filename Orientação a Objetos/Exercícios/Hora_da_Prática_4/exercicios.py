@@ -78,9 +78,12 @@ class Livro():
         return f"Titulo: {self.titulo} | Autor: {self.autor} | Ano de Publicação: {self.ano_publicacao}"
 
     def verificar_disponibilidade(ano):
-        livros_disponiveis = [livro for livro in Livro.livros if livro.ano_publicacao == ano and livro.disponivel]
-        return f"Os livros de {ano} são {livros_disponiveis}"
-            
+        lista_livros = [livro1,livro2]
+        livros_ano =[]
+        for livro in lista_livros:
+            if ano == livro.ano_publicacao:
+                livros_ano.append(livro.titulo)
+                return f"Os livros de {ano} são {livros_ano}"
     @property
     def ativo(self):
         return "Disponível 👍" if self.disponivel else "Indisponível 📛"

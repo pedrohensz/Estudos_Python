@@ -1,4 +1,5 @@
 from avaliacao import Avaliacao
+from cardapio.item_cardapio import ItemCardapio
 
 """
 O que é uma classe ?
@@ -205,6 +206,7 @@ class Restaurante:
         self.categoria = _categoria.upper()
         self._ativo = False
         self._avaliacao = []
+        self._cardapio = []
         Restaurante.restaurantes.append(self)
     def __str__(self):
         return f'{self.nome} | {self.categoria}'
@@ -246,3 +248,100 @@ class Restaurante:
         print(f'{'Nome do Restraurante'.ljust(25)} | {'Categoria'.ljust(25)} | {'Status'.ljust(25)} | {'Avaliação'.ljust(25)}')
         for restaurante in Restaurante.restaurantes:
             print(f"{restaurante.nome.ljust(25)} | {restaurante.categoria.ljust(25)} | {restaurante.ativo.ljust(25)} | {str(restaurante.media_avaliacoes).ljust(25)}")
+
+    
+    def adicionar_bebida_no_cardapio(self, bebida):
+        self._cardapio.append([bebida.nome, bebida.preco])
+
+
+    def adicionar_prato_no_cardapio(self,prato):
+        self._cardapio.append([prato.nome, prato.preco])
+
+    def listar_cardapio(self):
+        return f"Estes são os pratos do restaurante {self.nome}: {self._cardapio}"
+    
+
+    """
+    Refatoração
+    Durante o decorrer do curso foi notado que o código estava ficando muito repetitivo, assim será feita a refatoração de alguns méotodos para que o código fique mais limpo
+    """
+
+
+    class Restaurante:
+        restaurantes = []
+    def __init__(self, _nome, _categoria):
+        self.nome = _nome.title()
+        self.categoria = _categoria.upper()
+        self._ativo = False
+        self._avaliacao = []
+        self._cardapio = []
+        Restaurante.restaurantes.append(self)
+    def __str__(self):
+        return f'{self.nome} | {self.categoria}'
+    
+
+    @property
+    def ativo(self):
+        return "Ativo 👌" if self._ativo else "Desativado 📛"
+    
+    def alternar_estado(self):
+        self._ativo = not self._ativo
+
+    #resolução do Mão na Massa 5 (inserindo validações na nota)
+    def receber_avaliacao(self, cliente, nota):
+        avaliacao = Avaliacao(cliente,nota)
+        if not isinstance(nota, float):
+            raise TypeError ("A avaliação precisa ser uma ser inserida com virgula (ex: xx,xx).")
+        elif nota > 5.0:
+            raise TypeError ("A nota não pode ser maior que 5.00.")
+        elif nota < 0:
+            raise ValueError ("A avaliação inserida está negativo")   
+        else:
+            self._avaliacao.append(avaliacao)
+    
+
+        
+
+    @property
+    def media_avaliacoes(self):
+        if not self._avaliacao: #caso não tenha nenhuma avalição retorna zero
+            return "Restaurante ainda sem avaliações"
+        soma_das_notas = sum(Avaliacao._nota for Avaliacao in self._avaliacao) #soma de todas as notas contidas na lista de avaliacoes
+        quantidade_de_notas = len(self._avaliacao) #armazena o numero de avaliacoes
+        media = round(soma_das_notas/ quantidade_de_notas, 1) #realiza o calculo da média
+        return media #retorna a média
+    
+    @classmethod
+    def listar_restaurantes(cls):
+        print(f'{'Nome do Restraurante'.ljust(25)} | {'Categoria'.ljust(25)} | {'Status'.ljust(25)} | {'Avaliação'.ljust(25)}')
+        for restaurante in Restaurante.restaurantes:
+            print(f"{restaurante.nome.ljust(25)} | {restaurante.categoria.ljust(25)} | {restaurante.ativo.ljust(25)} | {str(restaurante.media_avaliacoes).ljust(25)}")
+
+    
+    # def adicionar_bebida_no_cardapio(self, bebida):
+    #     self._cardapio.append([bebida.nome, bebida.preco])
+
+
+    # def adicionar_prato_no_cardapio(self,prato):
+    #     self._cardapio.append([prato.nome, prato.preco])
+
+    # def listar_cardapio(self):
+    #     return f"Estes são os pratos do restaurante {self.nome}: {self._cardapio}"
+
+    def adicionar_no_cardapio(self,item):
+        #o método isnstance é utilizado para verificar se um método é uma instância de uma classe específica.
+        if isinstance(item,ItemCardapio):
+            self._cardapio.append(item)
+
+    #criando função para exibir cardapio
+    @property #informando que séra um método para apenas leitura
+    def exibir_cardapio(self):
+        print(f"Cardapio do restaurante (self._nome)\n")
+        for i,item in enumerate(self._cardapio,start=1):
+            #aqui está sendo feito o condicional para verificar se o item contêm um atributo
+            if hasattr(item,'descricao'):
+                mensagem_prato = f'{i}, Nome:{item.nome} | Preço R${item.preco} | Descrição: {item.descricao}'
+                print(mensagem_prato)
+            else:
+                mensagem_bebida = f'{i}, Nome:{item.nome} | Preço R${item.preco} | Tamanho: {item.tamanho}'
+                print(mensagem_bebida)                
