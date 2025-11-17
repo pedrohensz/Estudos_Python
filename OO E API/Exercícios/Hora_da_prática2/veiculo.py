@@ -42,4 +42,4 @@ class Carro(Veiculo):
         self.cor = cor
 
     def ligar(self):
-        pass
+        print(f"O carro {self.modelo} está ligado.")

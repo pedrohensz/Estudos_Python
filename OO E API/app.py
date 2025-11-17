@@ -17,6 +17,5 @@ prato_paozinho.aplicar_desconto()
 def main():
     print(bebida_suco)
     print(prato_paozinho)
-
 if __name__ == '__main__':
     main()
