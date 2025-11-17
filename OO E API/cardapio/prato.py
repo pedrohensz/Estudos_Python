@@ -11,3 +11,6 @@ class Prato(ItemCardapio):
 
     def __str__(self):
         return f"{self.nome} - R$ {self.preco:.2f}"
+    
+    def aplicar_desconto(self):
+        self.preco -= (self.preco * 0.05)

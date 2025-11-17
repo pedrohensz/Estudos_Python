@@ -9,6 +9,9 @@ restaurante_praca = Restaurante("Praça", "Gourmet")
 restaurante_praca.adicionar_no_cardapio(bebida_suco)
 restaurante_praca.adicionar_no_cardapio(prato_paozinho)
 
+bebida_suco.aplicar_desconto()
+prato_paozinho.aplicar_desconto()
+
 #Aqui eu descobri que caso você atribua um métdo a classe pai, ambas as classe pegam ele também
 #exemplo do método string
 def main():
