@@ -1,6 +1,6 @@
 from cardapio.bebida import Bebida
 from cardapio.prato import Prato
-from restaurante import Restaurante
+from OO_E_API.Modulo_1_2.restaurante import Restaurante
 
 bebida_suco = Bebida("Suco de Melancia", 5.0, "Grande")
 prato_paozinho = Prato("Pãozinho", 2.00, "O melhor pão da cidade")

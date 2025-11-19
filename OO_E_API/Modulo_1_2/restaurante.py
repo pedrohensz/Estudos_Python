@@ -1,4 +1,4 @@
-from avaliacao import Avaliacao
+from OO_E_API.Modulo_1_2.avaliacao import Avaliacao
 from cardapio.item_cardapio import ItemCardapio
 
 """
