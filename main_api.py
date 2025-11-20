@@ -36,6 +36,10 @@ a aplicação executa a função associada e retorna o JSON
 """
 @app.get('/api/hello')
 def hello_world():
+    """
+    Endpoint que exibe uma mensagem incrível do mundo da
+    programação.
+    """
     return{'Hello':'World!'}
 
 """
@@ -44,6 +48,10 @@ Pegando o exemplo do último módulo vamos inserir o cardápio no nosso servidor
 """
 @app.get('/api/restaurantes/')
 def get_restaurantes(restaurante: str = Query(None)):
+    """
+    Endpoint que exibe os cardápios dos restaurantes
+    """
+    
     url = "https://guilhermeonrails.github.io/api-restaurantes/restaurantes.json" 
     response = requests.get(url)
 
@@ -57,6 +65,8 @@ def get_restaurantes(restaurante: str = Query(None)):
         for item in dados_json:
             nome_do_restaurante = item['Company']
             if item['Company'] == restaurante:
+                if nome_do_restaurante not in dados_restaurante:
+                    dados_restaurante[nome_do_restaurante] = []
                 dados_restaurante[nome_do_restaurante].append({
                 "item": item['Item'],
                 "price": item['price'],
