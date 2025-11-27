@@ -47,17 +47,24 @@ Construção de um backend simples utilizando FastAPI:
 ## 📁 Estrutura do Repositório
 
 pedrohensz-estudos_python/
-├── Introdução Python/ # Conceitos básicos, loops, condicionais, funções, estruturas de dados.
-├── Orientação a Objetos/ # Exercícios e versão OO do Sabor Express.
-├── OO_E_API/ # Módulos avançados e estudo de APIs.
-│ ├── Exercícios/ # Herança, classes abstratas, práticas de POO.
-│ ├── Modulo_1_2/ # Sabor Express com POO e cardápio.
-│ ├── Modulo_4_Requisicoes/ # Consumo de API externa (requests).
-│ └── Modulo_5_FastApi/ # API criada com FastAPI.
-└── requirements.txt # Dependências do projeto FastAPI.
 
-markdown
-Copiar código
+|── Introdução Python/Conceitos básicos, loops, condicionais, funções, estruturas de dados.
+
+|── Orientação a Objetos/ ` Exercícios e versão OO do Sabor Express.`
+
+|── OO_E_API/ `Módulos avançados e estudo de APIs.`
+ 
+    |── Exercícios/ `Herança, classes abstratas, práticas de POO.`
+
+    |── Modulo_1_2/ ` Sabor Express com POO e cardápio.`
+
+    |├── Modulo_4_Requisicoes/ `Consumo de API externa (requests).`
+
+    |└── Modulo_5_FastApi/ ` API criada com FastAPI.`
+|
+|└── requirements.txt ` Dependências do projeto FastAPI.`
+
+
 
 ---
 
@@ -101,24 +108,24 @@ Copiar código
 git clone https://github.com/pedrohensz/estudos_python.git
 cd estudos_python
 Executar um projeto de console (ex: Sabor Express)
-bash
-Copiar código
+
 cd "Introdução Python/Sabor Express"
 python app.py
 Executar a API com FastAPI
 Instale as dependências:
 
 
-Copiar código
+
 cd OO_E_API
 pip install -r requirements.txt
 Execute a API:
 
-Copiar código
+
 cd Modulo_5_FastApi
 uvicorn main_api:app --reload
 Acesse a documentação interativa:
 
 
-Copiar código
+
 http://127.0.0.1:8000/docs
+
