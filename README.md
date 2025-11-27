@@ -46,3 +46,79 @@ Construção de um backend simples utilizando FastAPI:
 
 ## 📁 Estrutura do Repositório
 
+pedrohensz-estudos_python/
+├── Introdução Python/ # Conceitos básicos, loops, condicionais, funções, estruturas de dados.
+├── Orientação a Objetos/ # Exercícios e versão OO do Sabor Express.
+├── OO_E_API/ # Módulos avançados e estudo de APIs.
+│ ├── Exercícios/ # Herança, classes abstratas, práticas de POO.
+│ ├── Modulo_1_2/ # Sabor Express com POO e cardápio.
+│ ├── Modulo_4_Requisicoes/ # Consumo de API externa (requests).
+│ └── Modulo_5_FastApi/ # API criada com FastAPI.
+└── requirements.txt # Dependências do projeto FastAPI.
+
+markdown
+Copiar código
+
+---
+
+## 🧠 Conceitos Abordados
+
+### **Fundamentos de Python**
+- Variáveis, tipos de dados, operadores  
+- Listas, dicionários, tuplas  
+- Loops (`for`, `while`)  
+- Condicionais (`if`, `elif`, `else`)  
+
+### **Programação Orientada a Objetos**
+- Classes e objetos  
+- Método construtor (`__init__`)  
+- Encapsulamento  
+- Propriedades (`@property`)  
+- Métodos de classe e estáticos  
+- Herança e polimorfismo  
+- Classes abstratas (ABC)  
+
+### **Manipulação de APIs**
+- Requisições HTTP com `requests`  
+- Manipulação e parsing de JSON  
+
+### **Desenvolvimento Backend**
+- Criação de APIs REST com FastAPI  
+- Rotas, parâmetros e responses  
+- Servidor com Uvicorn  
+
+---
+
+## 🛠️ Como Executar
+
+### **Pré-requisitos**
+- Python 3.x  
+- Git  
+
+---
+
+### **Clone o repositório**
+git clone https://github.com/pedrohensz/estudos_python.git
+cd estudos_python
+Executar um projeto de console (ex: Sabor Express)
+bash
+Copiar código
+cd "Introdução Python/Sabor Express"
+python app.py
+Executar a API com FastAPI
+Instale as dependências:
+
+
+Copiar código
+cd OO_E_API
+pip install -r requirements.txt
+Execute a API:
+
+Copiar código
+cd Modulo_5_FastApi
+uvicorn main_api:app --reload
+Acesse a documentação interativa:
+
+
+Copiar código
+http://127.0.0.1:8000/docs
